@@ -9,7 +9,7 @@ if has('win32')
 	set backupdir=$TEMP
 	set directory=$TEMP
 	set cursorline
-elseif has('unix')
+else
 	set backupdir=/tmp
 	set directory=/tmp
 	set guifont=monospace\ 11
