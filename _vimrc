@@ -131,3 +131,4 @@ set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set tabstop=4
 set shiftwidth=4
 au BufNewFile,BufRead CMakeLists.txt set filetype=cmake
+noremenu PopUp.删除包含光标所有所单词的行 :<c-u>g/\<<c-r><c-w>\>/d<cr>
