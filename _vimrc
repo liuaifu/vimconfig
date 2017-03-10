@@ -1,4 +1,15 @@
 set nocompatible
+set encoding=utf-8
+set langmenu=zh_CN.UTF-8
+language message zh_CN.UTF-8
+set fileencodings=utf-8,chinese,big5,latin1
+let $LANG = 'zh_CN.UTF-8'
+
+source $VIMRUNTIME/mswin.vim
+behave mswin
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+
 set backup
 set writebackup
 set number
@@ -14,18 +25,6 @@ else
 	set directory=/tmp
 	set guifont=monospace\ 11
 endif
-"source $VIMRUNTIME/vimrc_example.vim
-source $VIMRUNTIME/mswin.vim
-behave mswin
-
-set encoding=utf-8
-set langmenu=zh_CN.UTF-8
-language message zh_CN.UTF-8
-"set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-let $LANG = 'zh_CN.UTF-8'
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
 
 let g:screen_size_restore_pos = 1
 
@@ -132,3 +131,6 @@ set tabstop=4
 set shiftwidth=4
 au BufNewFile,BufRead CMakeLists.txt set filetype=cmake
 noremenu PopUp.删除包含光标所有所单词的行 :<c-u>g/\<<c-r><c-w>\>/d<cr>
+autocmd FileType python nnoremap <buffer> <F5> :exec '!python' shellescape(@%, 1)<cr>
+nnoremap <F2> :e ++enc=gbk<cr>
+nnoremap <F3> :e ++enc=utf-8<cr>

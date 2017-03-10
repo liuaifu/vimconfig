@@ -36,6 +36,8 @@ syn match	txtInfo	"\d\+\.\d\+\.\d\+\.\d\+"
 syn match	txtInfo	"编译时间：.*"
 syn match	txtInfo	"compile date.*"
 syn match	txtInfo	"compile time.*"
+syn match	txtInfo	"success"
+syn match	txtInfo	"成功"
 
 hi def link     txtLog        Error
 hi def link     txtInfo       Type
