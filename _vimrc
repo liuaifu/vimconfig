@@ -131,6 +131,6 @@ set tabstop=4
 set shiftwidth=4
 au BufNewFile,BufRead CMakeLists.txt set filetype=cmake
 noremenu PopUp.删除包含光标所有所单词的行 :<c-u>g/\<<c-r><c-w>\>/d<cr>
-autocmd FileType python nnoremap <buffer> <F5> :exec '!python' shellescape(@%, 1)<cr>
+autocmd FileType python nnoremap <buffer> <F5> :exec '!python' shellescape(@%, 1)<cr><cr>
 nnoremap <F2> :e ++enc=gbk<cr>
 nnoremap <F3> :e ++enc=utf-8<cr>
