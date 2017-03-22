@@ -134,3 +134,5 @@ noremenu PopUp.删除包含光标所有所单词的行 :<c-u>g/\<<c-r><c-w>\>/d<
 autocmd FileType python nnoremap <buffer> <F5> :exec '!python' shellescape(@%, 1)<cr>
 nnoremap <F2> :e ++enc=gbk<cr>
 nnoremap <F3> :e ++enc=utf-8<cr>
+"按星号时不要跳到下一个匹配
+nnoremap * :keepjumps normal! mi*`i<CR>
