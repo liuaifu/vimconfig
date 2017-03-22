@@ -20,6 +20,7 @@ if has('win32')
 	set backupdir=$TEMP
 	set directory=$TEMP
 	set cursorline
+	set guifont=Consolas:h15
 else
 	set backupdir=/tmp
 	set directory=/tmp
@@ -136,3 +137,6 @@ nnoremap <F2> :e ++enc=gbk<cr>
 nnoremap <F3> :e ++enc=utf-8<cr>
 "按星号时不要跳到下一个匹配
 nnoremap * :keepjumps normal! mi*`i<CR>
+syntax enable
+set background=dark
+colorscheme monokai
