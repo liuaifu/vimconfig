@@ -20,11 +20,11 @@ if has('win32')
 	set backupdir=$TEMP
 	set directory=$TEMP
 	set cursorline
-	set guifont=Consolas:h15
+	set guifont=Consolas:h12
 else
 	set backupdir=/tmp
 	set directory=/tmp
-	set guifont=monospace\ 11
+	set guifont=monospace\ 12
 endif
 
 let g:screen_size_restore_pos = 1
