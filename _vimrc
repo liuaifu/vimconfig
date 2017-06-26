@@ -1,4 +1,3 @@
-set nocompatible
 set encoding=utf-8
 set langmenu=zh_CN.UTF-8
 language message zh_CN.UTF-8
@@ -9,7 +8,9 @@ source $VIMRUNTIME/mswin.vim
 behave mswin
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
+"set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
+set nocompatible
 set backup
 set writebackup
 set number
@@ -36,35 +37,35 @@ set runtimepath+=$HOME/_vim
 filetype plugin indent on
 syntax on
 
-set diffexpr=MyDiff()
-function MyDiff()
-  let opt = '-a --binary '
-  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-  let arg1 = v:fname_in
-  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-  let arg2 = v:fname_new
-  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-  let arg3 = v:fname_out
-  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
-      if empty(&shellxquote)
-        let l:shxq_sav = ''
-        set shellxquote&
-      endif
-      let cmd = '"' . $VIMRUNTIME . '\diff"'
-    else
-      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-    endif
-  else
-    let cmd = $VIMRUNTIME . '\diff'
-  endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
-  if exists('l:shxq_sav')
-    let &shellxquote=l:shxq_sav
-  endif
-endfunction
+"set diffexpr=MyDiff()
+"function MyDiff()
+"  let opt = '-a --binary '
+"  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+"  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+"  let arg1 = v:fname_in
+"  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+"  let arg2 = v:fname_new
+"  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+"  let arg3 = v:fname_out
+"  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+"  if $VIMRUNTIME =~ ' '
+"    if &sh =~ '\<cmd'
+"      if empty(&shellxquote)
+"        let l:shxq_sav = ''
+"        set shellxquote&
+"      endif
+"      let cmd = '"' . $VIMRUNTIME . '\diff"'
+"    else
+"      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+"    endif
+"  else
+"    let cmd = $VIMRUNTIME . '\diff'
+"  endif
+"  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
+"  if exists('l:shxq_sav')
+"    let &shellxquote=l:shxq_sav
+"  endif
+"endfunction
 
 if has("gui_running")
   function! ScreenFilename()
@@ -126,8 +127,6 @@ endif
 
 noremap <expr> <silent> <Home> col('.') == match(getline('.'),'\S')+1 ? '0' : '^'
 imap <silent> <Home> <C-O><Home>
-"set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set tabstop=4
 set shiftwidth=4
 au BufNewFile,BufRead CMakeLists.txt set filetype=cmake
@@ -140,3 +139,7 @@ nnoremap * :keepjumps normal! mi*`i<CR>
 syntax enable
 set background=dark
 colorscheme monokai
+"记住文件上次浏览位置
+if has("autocmd")
+	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
