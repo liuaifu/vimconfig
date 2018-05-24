@@ -128,7 +128,11 @@ endif
 noremap <expr> <silent> <Home> col('.') == match(getline('.'),'\S')+1 ? '0' : '^'
 imap <silent> <Home> <C-O><Home>
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
+set noexpandtab
+set autoindent
+set cindent
 au BufNewFile,BufRead CMakeLists.txt set filetype=cmake
 noremenu PopUp.删除包含光标所有所单词的行 :<c-u>g/\<<c-r><c-w>\>/d<cr>
 autocmd FileType python nnoremap <buffer> <F5> :exec '!python' shellescape(@%, 1)<cr><cr>
