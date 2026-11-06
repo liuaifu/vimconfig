@@ -142,7 +142,9 @@ nnoremap <F3> :e ++enc=utf-8<cr>
 nnoremap * :keepjumps normal! mi*`i<CR>
 syntax enable
 set background=dark
-colorscheme monokai
+if has("gui_running")
+	colorscheme monokai
+endif
 "记住文件上次浏览位置
 if has("autocmd")
 	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
